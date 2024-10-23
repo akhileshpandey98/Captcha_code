@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha_code</title>
+    <style>
+        #capcha 
+        {
+            width: 250px;
+            min-height: 100px;
+            background-image: url("captcha.png");
+            background-size: cover;
+            font-size: 50px;
+            line-height: 100px;
+            text-align: center;
+            font-family: cursive;
+            font-weight: bold;
+            box-shadow: 3px 4px 8px 3px;
+            text-shadow: 5px 4px 9px aqua ;
+            border-radius: 40px;
+            margin: auto;
+            color: black;
+        }
+        form{
+            background:linear-gradient(to left,rgb(239, 206, 206),rgb(74, 114, 118));
+            width: 300px;
+            border-radius: 20px;
+            padding: 20px;
+            margin: auto;
+            color: white;
+            box-shadow: 3px 4px 10px 3px black;
+            
+        }
+        button{
+            height: 30px;
+            width: 70px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        input
+        {
+            width: 150px;
+            height: 30px;
+            border-radius: 10px;
+            padding: 5px;
+        }
+        h1{
+            text-align: center;
+            text-shadow: 2px 3px 8px;
+        }
+    </style>
+
+
+    <script>
+
+        function getRandomNumber(min, max)
+         {
+            var a = Math.random();
+            a = a * (max - min) + min;
+            a = parseInt(a);
+            return a;
+        }
+
+        function generatecaptcha()
+         {
+            var a=String.fromCharCode(getRandomNumber(69,90));
+            var b=String.fromCharCode(getRandomNumber(97,122));
+            var c=getRandomNumber(0,9);
+            var d=String.fromCharCode(getRandomNumber(69,95));
+            var e=String.fromCharCode(getRandomNumber(97,122));
+            var f=getRandomNumber(0,9);
+
+            var cp=a+b+c+d+e+f;
+
+
+            document.getElementById("capcha").innerHTML=cp;
+        }
+
+        function validatecaptcha()
+        {
+            var a=document.getElementById("t1").value;
+            var b=document.getElementById("capcha").innerHTML;
+
+            if(a==b)
+        {
+            alert("Captcha Matched");
+        }  
+        else
+        {
+            alert("Invalid Captcha");
+        }
+        }
+
+      
+
+    </script>
+
+
+
+</head>
+
+<body onload="generatecaptcha()">
+    <h1>Captcha Code</h1>
+    <form>
+    <div id="capcha">
+</div>
+<br/>
+<button onclick="generatecaptcha()">Refresh</button>
+<br/><br/>
+Enter Your Captcha <br>
+<input type="text" placeholder="Enter Captcha" id="t1"/>
+<br/><br/>
+<button onclick="validatecaptcha()">Save</button>
+
+</form>
+
+</body>
+
+</html>
